@@ -1,11 +1,16 @@
-/* 
-<style type="text/css">
-button,
+
 div,
 form,
 input {
   margin: 10px;
 } 
 
+.btn {
+  margin: 10px;
+  background-color: rgb(218, 214, 19); 
+}
 
---------css stylings to be added later-------*/
+body {
+  background-image: url(../images/nintendologo.jpg);
+}
+
