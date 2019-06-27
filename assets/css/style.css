@@ -5,12 +5,25 @@ input {
   margin: 10px;
 } 
 
+body {
+  background-image: url(../images/jimmynintendo.jpg);
+}
+
+p {
+  font-weight: bolder;
+}
+
 .btn {
   margin: 10px;
-  background-color: rgb(218, 214, 19); 
+  background-color: rgb(39, 19, 218); 
+  color: white;
+  font-weight: bolder;
 }
 
-body {
-  background-image: url(../images/nintendologo.jpg);
+#game-input {
+  font-weight: bolder;
 }
 
+#label {
+  font-weight: bolder;
+}
