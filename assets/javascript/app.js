@@ -85,9 +85,6 @@ $(document).ready(function () {
                 var gameImage = $("<img id='giphImage' class='images'>");
 
 
-                //---------------Here is where I am attempting to get the data-still/animate toggle to function-----------------
-                // Currently all of the rendered giphs are toggle functional except whichever giph sits at the top of the
-                // prepended array of giphs....????
 
                 // Giving the image tag a src attribute of a property pulled off of the result item
                 gameImage.attr("src", results[i].images.fixed_height_still.url);
@@ -98,17 +95,24 @@ $(document).ready(function () {
 
                 // gameImage.attr("data-animate", results[i].images.fixed_height.url);
                 // gameImage.attr("data-still", results[i].images.fixed_height_still.url);
-
-
+                
+                
+                // Appending gameImage to the gameDiv on the html
+                gameDiv.append(gameImage);
+                
+                // Appending the gif to display following the gifs that preceded 
+                $("#games-view").prepend(gameDiv);
+                
                 // Appending the paragraph and gameImage to the "gameDiv" div 
-
                 $("#giphImage").on("click", function () {
                     var state = $(this).attr("data-state");
+                    
+                    console.log($(this));
 
                     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
                     // Then, set the image's data-state to animate
                     // Else set src to the data-still value
-
+                    
                     if (state === "still") {
                         $(this).attr("src", $(this).attr("data-animate"));
                         $(this).attr("data-state", "animate");
@@ -117,12 +121,7 @@ $(document).ready(function () {
                         $(this).attr("data-state", "still");
                     };
                 });
-
-                // Appending gameImage to the gameDiv on the html
-                gameDiv.append(gameImage);
-
-                // Appending the gif to display following the gifs that preceded 
-                $("#games-view").prepend(gameDiv);
+                
 
             }
         });
