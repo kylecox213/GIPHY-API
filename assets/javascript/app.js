@@ -3,23 +3,23 @@
 // $("button").on("click", function()
 
 $(document).ready(function () {
-
+    
     var nesGames = ["The Legend of Zelda", "Metroid", "Jackal", "Super Mario Bros. 3", "Ghosts N' Goblins", "Heavy Barrel",
-        "Metal Gear", "Guerilla War", "Ikari Warriors", "Star Soldier"];
-
-
+    "Metal Gear", "Guerilla War", "Ikari Warriors", "Star Soldier"];
+    
+    
     // Function for displaying game data
     function renderButtons() {
-
+        
         // Deleting the games prior to adding new games; prevention for repeat buttons)
         $("#buttons-view").empty();
-
+        
         // Looping through the array of games
         for (var i = 0; i < nesGames.length; i++) {
-
+                
             // Dynamically generating buttons for each game in the array
-            var newButton = $("<button>");
-            // Adding a class of game-btn to our button
+                var newButton = $("<button>");
+                // Adding a class of game-btn to our button
             newButton.addClass("btn game-btn");
             // Adding a data-attribute
             newButton.attr("data-name", nesGames[i]);
@@ -29,29 +29,31 @@ $(document).ready(function () {
             $("#buttons-view").append(newButton);
         }
     }
-
+    
     // This function handles events where a game button is clicked
     $("#add-game").on("click", function (event) {
         event.preventDefault();
 
+        
         // This line grabs the input from the textbox
         var nesGame = $("#game-input").val().trim();
-
+        
         // Adding game from the textbox to our array
         nesGames.push(nesGame);
-
+        
         // Calling renderButtons which handles the processing of our game array
         renderButtons();
     });
-
+    
     // Adding a click event listener to all elements with a class of "game-btn"
     $(document).on("click", ".game-btn", function () {
 
-
+        $("#games-view").empty();
+        
         var nesGame = $(this).attr("data-name").split(" ").join("+");
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=cZWfcmU9Q4EPAouDfubWCyrZEdNPwAKf&limit=10&q="
-
-
+        
+        
         // AJAX call to the giphy API to retrieve "Get" the requested game data and "then", carry out f(response)"
         $.ajax({
             url: queryURL + nesGame,
@@ -85,7 +87,6 @@ $(document).ready(function () {
                 var gameImage = $("<img id='giphImage' class='images'>");
 
 
-
                 // Giving the image tag a src attribute of a property pulled off of the result item
                 gameImage.attr("src", results[i].images.fixed_height_still.url);
 
@@ -105,6 +106,7 @@ $(document).ready(function () {
                 
                 // Appending the paragraph and gameImage to the "gameDiv" div 
                 $("#giphImage").on("click", function () {
+                    
                     var state = $(this).attr("data-state");
                     
                     console.log($(this));
@@ -122,11 +124,10 @@ $(document).ready(function () {
                     };
                 });
                 
-
             }
         });
     });
-
+    
     // Calling the renderButtons function to display the intial buttons
     renderButtons();
 
