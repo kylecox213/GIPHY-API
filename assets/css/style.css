@@ -9,6 +9,10 @@ body {
   background-image: url(../images/jimmynintendo.jpg);
 }
 
+h1 {
+  background: grey;
+}
+
 p {
   font-weight: bolder;
 }
@@ -26,4 +30,8 @@ p {
 
 #label {
   font-weight: bolder;
+}
+
+.images {
+  border: solid 7px black;
 }

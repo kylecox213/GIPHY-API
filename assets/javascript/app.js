@@ -37,6 +37,15 @@ $(document).ready(function () {
         
         // This line grabs the input from the textbox
         var nesGame = $("#game-input").val().trim();
+
+            //         if ($("#game-input").val().trim() === ("")) {
+            //     renderButtons.disabled = true;
+            //     console.log('button disabled');
+            // } else {
+            //     console.log('button added');
+            //     renderButtons.disabled = false;
+            //     console.log('button enabled');
+            // }
         
         // Adding game from the textbox to our array
         nesGames.push(nesGame);
@@ -49,7 +58,6 @@ $(document).ready(function () {
     $(document).on("click", ".game-btn", function () {
 
         $("#games-view").empty();
-        
         var nesGame = $(this).attr("data-name").split(" ").join("+");
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=cZWfcmU9Q4EPAouDfubWCyrZEdNPwAKf&limit=10&q="
         
@@ -130,5 +138,4 @@ $(document).ready(function () {
     
     // Calling the renderButtons function to display the intial buttons
     renderButtons();
-
 });
